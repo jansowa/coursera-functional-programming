@@ -22,11 +22,7 @@ object Lists {
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
-  def sum(xs: List[Int]): Int = {
-    var sum = 0
-    xs.foreach(sum += _)
-    sum
-  }
+  def sum(xs: List[Int]): Int = if (xs.isEmpty) 0 else xs.head + sum(xs.tail)
 
   /**
    * This method returns the largest element in a list of integers. If the
@@ -41,10 +37,10 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = {
-    var max:Int = 0
-    max+=2
-    xs.foreach(x => max=math.max(x,max))
-    max
-  }
+  def max(xs: List[Int]): Int = maxHelper(xs.tail, xs.head)
+
+  def maxHelper(xs: List[Int], currentMax: Int): Int =
+    if (xs.isEmpty) currentMax
+    else if (xs.head > currentMax) maxHelper(xs.tail, xs.head)
+    else maxHelper(xs.tail, currentMax)
 }
