@@ -1,4 +1,4 @@
-package week1.example
+package example
 
 object Lists {
 
@@ -7,7 +7,7 @@ object Lists {
    * multiple techniques that can be used for implementing this method, and
    * you will learn during the class.
    *
-   * For this week1.example assignment you can use the following methods in class
+   * For this example assignment you can use the following methods in class
    * `List`:
    *
    *  - `xs.isEmpty: Boolean` returns `true` if the list `xs` is empty
@@ -37,7 +37,9 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = maxHelper(xs.tail, xs.head)
+  def max(xs: List[Int]): Int =
+    if (xs.isEmpty) throw new NoSuchElementException()
+    else maxHelper(xs.tail, xs.head)
 
   def maxHelper(xs: List[Int], currentMax: Int): Int =
     if (xs.isEmpty) currentMax

@@ -1,4 +1,6 @@
-package week1.example
+package example
+
+import java.util.NoSuchElementException
 
 import org.junit._
 import org.junit.Assert.assertEquals
@@ -57,7 +59,7 @@ import org.junit.Assert.assertEquals
    * Exceptional behavior of a methods can be tested using a try/catch
    * and a failed assertion.
    *
-   * In the following week1.example, we test the fact that the method `intNotZero`
+   * In the following example, we test the fact that the method `intNotZero`
    * throws an `IllegalArgumentException` if its argument is `0`.
    */
    @Test def `intNotZero throws an exception if its argument is 0`: Unit = {
@@ -95,13 +97,29 @@ import org.junit.Assert.assertEquals
    */
   @Test def `sum of a few numbers (10pts)`: Unit = {
     assert(sum(List(1,2,0)) == 3)
+    assert(sum(List(-3, 3)) == 0)
+    assert(sum(List(-1)) == -1)
+    assert(sum(List(1)) == 1)
+  }
+
+  @Test def `sum of empty list`: Unit = {
+    assert(sum(List()) == 0)
   }
 
   @Test def `max of a few numbers (10pts)`: Unit = {
     assert(max(List(3, 7, 2)) == 7)
+    assert(max(List(2)) == 2)
+    assert(max(List(-1, -2, 3)) == 3)
   }
 
-
+  @Test def `max should throw NoSuchElementException if list is empty`: Unit = {
+    try {
+      max(List())
+      Assert.fail("No exception has been thrown")
+    } catch {
+      case e: NoSuchElementException => ()
+    }
+  }
 
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(1000)
 }
