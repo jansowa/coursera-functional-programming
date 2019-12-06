@@ -4,6 +4,8 @@ import java.util.NoSuchElementException
 
 import org.junit._
 import org.junit.Assert.assertEquals
+import example.Lists.sum
+import example.Lists.max
 
 /**
  * This class implements a JUnit test suite for the methods in object
@@ -81,7 +83,7 @@ import org.junit.Assert.assertEquals
    * implemented for this assignment. We fist import all members of the
    * `List` object.
    */
-  import Lists._
+  import examplejava.ListsJava._
 
 
   /**

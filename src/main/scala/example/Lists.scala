@@ -43,6 +43,5 @@ object Lists {
 
   def maxHelper(xs: List[Int], currentMax: Int): Int =
     if (xs.isEmpty) currentMax
-    else if (xs.head > currentMax) maxHelper(xs.tail, xs.head)
-    else maxHelper(xs.tail, currentMax)
+    else maxHelper(xs.tail, math.max(xs.head, currentMax))
 }
