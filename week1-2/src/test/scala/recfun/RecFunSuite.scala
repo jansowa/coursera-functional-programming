@@ -7,6 +7,8 @@ class RecFunSuite {
   import RecFun._
 
   // ------ balance tests -----------------------------------------------------
+  @Test def `balance: '()'`: Unit =
+    assert(balance("()".toList))
 
   @Test def `balance: '(if (zero? x) max (/ 1 x))' is balanced`: Unit =
     assert(balance("(if (zero? x) max (/ 1 x))".toList))
@@ -44,6 +46,9 @@ class RecFunSuite {
 
   @Test def `pascal: col=1,row=3`: Unit =
     assertEquals(3, pascal(1, 3))
+
+  @Test def `pascal: col=4, row=6`: Unit =
+    assertEquals(15, pascal(4, 6))
 
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
